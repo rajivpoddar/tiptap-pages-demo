@@ -1,0 +1,11 @@
+.pm-page {
+  width: 595px;          /* A4 portrait @ 96 dpi */
+  height: 842px;
+  margin: 48px auto;     /* centre on screen */
+  background: #fff;
+  box-shadow: 0 0 4px rgba(0,0,0,.15);
+  overflow: hidden;      /* no visible spill-over */
+}
+.pm-page-body { padding: 32px; }
+.pm-page-header,
+.pm-page-footer { height: 64px; }
