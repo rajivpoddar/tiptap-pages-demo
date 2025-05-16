@@ -4,6 +4,7 @@ import Pagination, {
   PageNode, HeaderFooterNode, BodyNode, // Restoring HeaderFooterNode
 } from 'tiptap-extension-pagination'
 import { useEffect } from 'react'
+import { PageNumberExtension } from './pageNumberPlugin'
 
 // Style block is being cleared of previous rules for page padding
 // as they are ineffective against inline styles set by the extension.
@@ -32,19 +33,20 @@ export default function TiptapPages() {
         defaultPaperSize: "A4",
         defaultPaperOrientation: 'portrait',
         defaultMarginConfig: { // This config seems to be the issue
-          top: 25.4,
+          top: 33.87, // Adjusted to the desired 33.87mm
           right: 25.4,
-          bottom: 25.4,
+          bottom: 33.87, // Adjusted to the desired 33.87mm
           left: 25.4,
+        },
+        pageAmendmentOptions: {
+          enableFooter: true,
+          // You might want to specify footerHeight in mm if needed, e.g., footerHeight: 15
         },
       }),
       PageNode, 
       HeaderFooterNode, // Restored
-      BodyNode.configure({ // Attempt to directly set style on BodyNode
-        HTMLAttributes: {
-          style: 'margin-top: 33.87mm; margin-right: 25.4mm; margin-bottom: 33.87mm; margin-left: 25.4mm;',
-        },
-      }),
+      BodyNode, // Removed .configure for HTMLAttributes
+      PageNumberExtension, // Updated to use the Tiptap Extension
     ],
     content: '',
   })
