@@ -23,6 +23,21 @@ const pageStyles = `
     margin-top: 0;
     margin-bottom: 0;
   }
+
+  /* Add this to prevent page scroll issues */
+  .ProseMirror div[data-type="page"] {
+    box-sizing: border-box;
+  }
+
+  /* Override body styles for correct height and margins */
+  .ProseMirror div[data-page-body="true"].body {
+    box-sizing: border-box !important;
+    height: 248.188mm !important;       /* 936px inner height + 2px border */
+    margin-top: 24.406mm !important;    /* Positioned 4.406mm below header content */
+    margin-bottom: 4.406mm !important;  /* Positioned 4.406mm above footer content */
+    margin-left: 25.4mm !important;     /* Default from extension */
+    margin-right: 25.4mm !important;    /* Default from extension */
+  }
 `;
 
 export default function TiptapPages() {
@@ -33,9 +48,9 @@ export default function TiptapPages() {
         defaultPaperSize: "A4",
         defaultPaperOrientation: 'portrait',
         defaultMarginConfig: { // This config seems to be the issue
-          top: 33.87, // Adjusted to the desired 33.87mm
+          top: 14.406, // Adjusted to correctly size and position the body
           right: 25.4,
-          bottom: 33.87, // Adjusted to the desired 33.87mm
+          bottom: 14.406, // Adjusted to correctly size and position the body
           left: 25.4,
         },
         pageAmendmentOptions: {
