@@ -10,7 +10,7 @@
     "preview": "vite preview",
     "build:submodule": "cd packages/tiptap-extension-pagination && npm install && npm run build && cd ../..",
     "reinstall:submodule": "npm install ./packages/tiptap-extension-pagination",
-    "submodule:prepare": "npm run build:submodule && npm run reinstall:submodule && rm -rf node_modules/.vite",
+    "submodule:prepare": "npm run build:submodule && npm run reinstall:submodule && rm -rf node_modules/.vite && touch vite.config.ts",
     "dev:submodule": "npm run submodule:prepare && npm run dev",
     "watch:submodule": "npx nodemon --watch packages/tiptap-extension-pagination --ignore 'packages/tiptap-extension-pagination/dist/*' --ignore 'packages/tiptap-extension-pagination/package-lock.json' --ext ts,tsx,js,jsx,json,css,scss,less,md --exec \"npm run submodule:prepare\""
   },
